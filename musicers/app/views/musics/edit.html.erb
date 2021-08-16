@@ -1,0 +1,21 @@
+<h1>MusicEdit</h1>
+<div>
+<%= form_with model: @music, local: true do |f| %>
+ <div></div>
+  <label for="music_name">Musician's Name</label>
+  <%= f.text_field :music_name %>
+ <div>
+  <label for="music_caption">Musician’s Caption</label>
+  <%= f.text_area :music_caption  %>
+ </div>
+ <div>
+  <label for="music_url">Musician's Musicvideo</label>
+  <%= f.text_field :music_url  %>
+ </div>
+ <div>
+  <label for="musicimage">Musician's Image</label>
+  <%= f.attachment_field :musicimage  %>
+ </div>
+  <%= f.submit "Edit" %>
+<% end %>
+</div>

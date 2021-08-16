@@ -2,9 +2,15 @@
 
 <div>
     <%= attachment_image_tag @music, :musicimage  %>
-    <p>Musician's Name:<%= @music.name  %></p>
+    <p>Musician's Name:<%= @music.music_name  %></p>
     <p>Musician’s Caption:<%= @music.music_caption  %></p>
     <p>Musician's Musicvideo:<%= @music.music_url  %></p>
     <p>Date:<%= @music.created_at.strftime('%Y/%m/%d')  %></p>
+
+    <span><%= link_to "back",musics_path %></span>
+    <span>|</span>
+    <span><%= link_to "Edit",edit_music_path(@music) %></span>
+    <span>|</span>
+    <span><%= link_to "Delete",music_path(@music),method: :delete, "data-confirm" => "Do you really delete?"%></span>
 
 </div>

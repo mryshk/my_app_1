@@ -1,0 +1,16 @@
+<h2>MypageEdit</h2>
+<%= form_with model:@user, local:true do |f| %>
+  <div>
+  <label for="Profileimage">ProfileImage</label>
+  <%= f.attachment_field :profile_image  %>
+  </div>
+
+  <label for="inputName">Name</label>
+  <p>
+  <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"Name"%>
+  </p>
+  <p>
+  <%= f.text_area :introduction, placeholder:"Introduction"%>
+  </p>
+  <%= f.submit "Update" %>
+<% end %>

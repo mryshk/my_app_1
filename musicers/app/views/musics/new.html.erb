@@ -1,4 +1,4 @@
-<h1>Music投稿</h1>
+<h1>MusicNew</h1>
 <div>
 <%= form_with model: @music, local: true do |f| %>
  <div></div>
@@ -19,3 +19,5 @@
   <%= f.submit "投稿" %>
 <% end %>
 </div>
+
+<span><%= link_to "back",musics_path %></span>

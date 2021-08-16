@@ -1,0 +1,8 @@
+<h1>Mypage</h1>
+
+<div>
+  <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg",size: "60x60" %>
+  <p>Name：<%= @user.name %></p>
+  <p>introduction：<%= @user.introduction %></p>
+ <%= link_to "Edit", edit_user_path(current_user )%>
+</div>
