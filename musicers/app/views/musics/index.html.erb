@@ -1,0 +1,9 @@
+<div>
+    <%= @musics.each do |music| %>
+    <%= attachment_image_tag music, :musicimage  %>
+    <p>Musician's Name:<%= music.music_name %></p>
+    <p>Musician’s Caption:<%= music.music_caption %></p>
+    <p>Musician's Musicvideo:<%= music.music_url %></p>
+    <p>Date:<%= music.created_at.strftime('%Y/%m/%d') %></p>
+
+</div>
