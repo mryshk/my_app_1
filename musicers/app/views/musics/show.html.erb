@@ -1,4 +1,4 @@
-<h1>Your post Music</h1>
+<h1>Posted Music</h1>
 
 <div class="music">
     <%= attachment_image_tag @music, :musicimage ,:fill, 600, 500, fallback: "no_image.jpg",size: "600x500"  %>
@@ -6,18 +6,43 @@
     <p>Musician’s Caption:<%= @music.music_caption  %></p>
     <p>Musician's Musicvideo:<%= @music.music_url  %></p>
     <p>Date:<%= @music.created_at.strftime('%Y/%m/%d')  %></p>
+    <% if @music.user == current_user %>
+    <span><%= link_to "MusicEdit",edit_music_path(@music) %></span>
+    <span>|</span>
+    <span><%= link_to "Music Delete",music_path(@music),method: :delete, "data-confirm" => "Do you really delete?"%></span>
+    <% end %>
 </div>
 
-<h2>Comments</h2>
+<h2>Comments fot this music</h2>
 <div class="music_comments">
-<p>Nomber of comments：<%= @comments.count %></p>
+<h4>Nomber of comments：<%= @comments.count %></h4>
 <div>
 <% @comments.each do |music_comment| %>
-  <p>No:&nbsp;<%= music_comment.id %></p>
-  <p>N:&nbsp;<%= music_comment.user.name %></p>
-  <p>C:&nbsp;<%= music_comment.comment %></p>
-  <p><%= link_to "Edit", edit_music_music_comment_path(music_comment,music_comment.music),method: :get%></p>
+  <p>Name:&ensp;<%= music_comment.user.name %></p>
+  <p>Comment:&ensp;<%= music_comment.comment %></p>
+  <% if music_comment.user == current_user %>
+  <p><%= link_to "Edit", edit_music_music_comment_path(music_comment.music,music_comment),method: :get%></p>
+  <div class="comment-delete">
+    <%= link_to "Delete", music_music_comment_path(music_comment.music,music_comment),method: :delete,'data-confirm' => "Do you really want to delete?" %>
+  </div>
+  <% end %>
 <% end %>
+</div>
+<h2>Favorites for this music</h2>
+<div>
+<% if @music.favorited_by?(current_user) %>
+    <p>
+      <%= link_to music_favorites_path(@music), method: :delete do %>
+        ♥<%= @music.favorites.count %> Favorites
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to music_favorites_path(@music), method: :post do %>
+        ♡<%= @music.favorites.count %> Favorites
+      <% end %>
+    </p>
+  <% end %>
 </div>
 </div>
 
@@ -30,9 +55,5 @@
 
 
   <span><%= link_to "back",musics_path %></span>
-  <span>|</span>
-  <span><%= link_to "Edit",edit_music_path(@music) %></span>
-  <span>|</span>
-  <span><%= link_to "Delete",music_path(@music),method: :delete, "data-confirm" => "Do you really delete?"%></span>
 
 
