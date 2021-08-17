@@ -1,0 +1,7 @@
+<h1>Music Edit</h1>
+<div class="edit-comment">
+<%= form_with model: @comment,url: music_music_comment_path(@comment),method: :patch, local: true do |f| %>
+  <%= f.text_area :comment, rows:'5'%>
+  <%= f.submit "Comment Post" %>
+<% end %>
+</div>

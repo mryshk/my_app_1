@@ -1,8 +1,10 @@
 <h1>Mypage</h1>
 
 <div>
-  <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg",size: "60x60" %>
+  <%= attachment_image_tag @user, :profile_image, :fill, 300, 300, fallback: "no_image.jpg",size: "300x300" %>
   <p>Name：<%= @user.name %></p>
   <p>introduction：<%= @user.introduction %></p>
  <%= link_to "Edit", edit_user_path(current_user )%>
+ <%= link_to "Back", musics_path %>
+
 </div>

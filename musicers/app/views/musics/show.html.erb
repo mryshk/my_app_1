@@ -1,16 +1,38 @@
 <h1>Your post Music</h1>
 
-<div>
-    <%= attachment_image_tag @music, :musicimage  %>
+<div class="music">
+    <%= attachment_image_tag @music, :musicimage ,:fill, 600, 500, fallback: "no_image.jpg",size: "600x500"  %>
     <p>Musician's Name:<%= @music.music_name  %></p>
     <p>Musician’s Caption:<%= @music.music_caption  %></p>
     <p>Musician's Musicvideo:<%= @music.music_url  %></p>
     <p>Date:<%= @music.created_at.strftime('%Y/%m/%d')  %></p>
-
-    <span><%= link_to "back",musics_path %></span>
-    <span>|</span>
-    <span><%= link_to "Edit",edit_music_path(@music) %></span>
-    <span>|</span>
-    <span><%= link_to "Delete",music_path(@music),method: :delete, "data-confirm" => "Do you really delete?"%></span>
-
 </div>
+
+<h2>Comments</h2>
+<div class="music_comments">
+<p>Nomber of comments：<%= @comments.count %></p>
+<div>
+<% @comments.each do |music_comment| %>
+  <p>No:&nbsp;<%= music_comment.id %></p>
+  <p>N:&nbsp;<%= music_comment.user.name %></p>
+  <p>C:&nbsp;<%= music_comment.comment %></p>
+  <p><%= link_to "Edit", edit_music_music_comment_path(music_comment,music_comment.music),method: :get%></p>
+<% end %>
+</div>
+</div>
+
+<div class="new-comment">
+<%= form_with(model:[@music, @music_comment], local: true) do |f| %>
+  <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
+  <%= f.submit "Comment Post" %>
+<% end %>
+</div>
+
+
+  <span><%= link_to "back",musics_path %></span>
+  <span>|</span>
+  <span><%= link_to "Edit",edit_music_path(@music) %></span>
+  <span>|</span>
+  <span><%= link_to "Delete",music_path(@music),method: :delete, "data-confirm" => "Do you really delete?"%></span>
+
+
