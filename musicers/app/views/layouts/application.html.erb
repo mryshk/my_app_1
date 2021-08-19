@@ -7,33 +7,48 @@
     <script src="https://kit.fontawesome.com/fe634eb8bd.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" >
 
   </head>
 
-  <body>
+ <body　class="d-flex flex-column vh-100">
+  <header class="shadow-lg">
+    <nav class="navbar navbar-expand-md navbar-light" style="background-color:#e3f2fd;">
+      <div class="container">
+        <a class="navbar-brand mr-auto" href="">Musicers!</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav ml-auto">
+            <% if user_signed_in? %>
+            <li class="nav-item">
+              <%= link_to destroy_user_session_path, method: :delete,class: 'nav-link text-dark' do %><i class="fas fa-sign-out-alt">Logout</i><% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to user_path(current_user),class: 'nav-link text-dark' do %><i class="fas fa-user">Mypage</i><% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to new_music_path,class: 'nav-link text-dark' do %><i class="fas fa-plus">NewPost</i><% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to musics_path,class: 'nav-link text-dark' do %><i class="fas fa-headphones-alt">Musics</i><% end %>
+            </li>
 
-    <% if user_signed_in? %>
-      <li>
-        <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-      </li>
-      <li>
-        <%= link_to "Mypage", user_path(current_user) %>
-      </li>
-      <li>
-        <%= link_to "NewPost", new_music_path %>
-      </li>
-      <li>
-        <%= link_to "Musics", musics_path %>&nbsp;<i class="fas fa-headphones-alt"></i>
-      </li>
+            <% else %>
+            <li class="nav-item">
+              <%= link_to new_user_registration_path,class: 'nav-link text-dark' do %><i class="fas fa-user-plus">New Sign</i><% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to new_user_session_path,class: 'nav-link text-dark' do %><i class="fas fa-sign-in-alt">Login</i><% end %>
+            </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
 
-    <% else %>
-      <li>
-        <%= link_to "New Sign", new_user_registration_path %>
-      </li>
-      <li>
-        <%= link_to "Login", new_user_session_path %>
-      </li>
-    <% end %>
-    <%= yield %>
-  </body>
-</html>
+
+  <%= yield %>
+</body>

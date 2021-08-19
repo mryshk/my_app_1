@@ -1,22 +1,26 @@
 <h1>Posted Music</h1>
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-8 my-4">
+      <div class="card mt-4 shadow-lg h-100">
+        <%= attachment_image_tag @music, :musicimage ,:fill, 600, 500, fallback: "no_image.jpg",size: "600x500", class:"card-img-top" %>
+        <p class="card-title">Musician's Name:<%= @music.music_name  %></p>
+        <p class="card-text">Musician’s Caption:<%= @music.music_caption  %></p>
+        <p class="card-text">Musician's Musicvideo:<%= @music.music_url  %></p>
+        <p class="card-text">Date:<%= @music.created_at.strftime('%Y/%m/%d')  %></p>
+        <% if @music.user == current_user %>
+        <button type="button" class="btn btn-link card-link"> <%= link_to "MusicEdit",edit_music_path(@music)%></button>
+        <button type="button" class="btn btn-link card-link"><%= link_to "Music Delete",music_path(@music),method: :delete, "data-confirm" => "Do you really delete?"%><% end %></button>
+      </div>
+    </div>
+  </div>
 
-<div class="music">
-    <%= attachment_image_tag @music, :musicimage ,:fill, 600, 500, fallback: "no_image.jpg",size: "600x500"  %>
-    <p>Musician's Name:<%= @music.music_name  %></p>
-    <p>Musician’s Caption:<%= @music.music_caption  %></p>
-    <p>Musician's Musicvideo:<%= @music.music_url  %></p>
-    <p>Date:<%= @music.created_at.strftime('%Y/%m/%d')  %></p>
-    <% if @music.user == current_user %>
-    <span><%= link_to "MusicEdit",edit_music_path(@music) %></span>
-    <span>|</span>
-    <span><%= link_to "Music Delete",music_path(@music),method: :delete, "data-confirm" => "Do you really delete?"%></span>
-    <% end %>
-</div>
 
-<h2>Comments fot this music</h2>
+<h2>Comments fot this music</h2><span><%= link_to "NEW Comment", new_music_music_comment_path(@music),method: :get%></span>
 <div class="music_comments">
-<h4>Nomber of comments：<%= @comments.count %></h4>
+<h4>Number of comments：<%= @comments.count %></h4>
 <div>
+<%= attachment_image_tag @music.user,:profile_image ,:fill, 100, 100, fallback: "no_image.jpg",size: "100x100"  %>
 <% @comments.each do |music_comment| %>
   <p>Name:&ensp;<%= music_comment.user.name %></p>
   <p>Comment:&ensp;<%= music_comment.comment %></p>

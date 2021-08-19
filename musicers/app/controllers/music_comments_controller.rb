@@ -1,6 +1,7 @@
 class MusicCommentsController < ApplicationController
 
   def new
+    @music = Music.find(params[:music_id])
     @music_comment = MusicComment.new
   end
 
