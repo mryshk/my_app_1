@@ -1,37 +1,45 @@
-<h1>Posted Music</h1>
+<h1 class="mt-3 ml-4"><i class="fas fa-music">&nbsp;Posted Music</i></h1>
 <div class="container">
   <div class="row mt-4">
-    <div class="col-8 my-4">
-      <div class="card mt-4 shadow-lg h-100">
+    <div class="col-7 my-4">
+      <div class="card mt-4 shadow-lg h-70">
         <%= attachment_image_tag @music, :musicimage ,:fill, 600, 500, fallback: "no_image.jpg",size: "600x500", class:"card-img-top" %>
-        <p class="card-title">Musician's Name:<%= @music.music_name  %></p>
-        <p class="card-text">Musician’s Caption:<%= @music.music_caption  %></p>
-        <p class="card-text">Musician's Musicvideo:<%= @music.music_url  %></p>
-        <p class="card-text">Date:<%= @music.created_at.strftime('%Y/%m/%d')  %></p>
-        <% if @music.user == current_user %>
-        <button type="button" class="btn btn-link card-link"> <%= link_to "MusicEdit",edit_music_path(@music)%></button>
-        <button type="button" class="btn btn-link card-link"><%= link_to "Music Delete",music_path(@music),method: :delete, "data-confirm" => "Do you really delete?"%><% end %></button>
+        <div class="card-body p-5">
+          <p class="card-title">Musician's Name:<%= @music.music_name  %></p>
+          <p class="card-text">Musician’s Caption:<%= @music.music_caption  %></p>
+          <p class="card-text">Musician's Musicvideo:<%= @music.music_url  %></p>
+          <p class="card-text">Date:<%= @music.created_at.strftime('%Y/%m/%d')  %></p>
+          <% if @music.user == current_user %>
+          <button type="button" class="btn btn-link card-link"> <%= link_to "MusicEdit",edit_music_path(@music)%></button>
+          <button type="button" class="btn btn-link card-link"><%= link_to "Music Delete",music_path(@music),method: :delete, "data-confirm" => "Do you really delete?"%><% end %></button>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-5">
+      <h3><i class="fas fa-comments">Comments fot this music</i></h3>
+      <button type="button" class="btn btn-primary"><%= link_to new_music_music_comment_path(@music),method: :get do %><i class="fas fa-comments"></i><% end %></button>
+      <div class="row">
+        <h5>Number of comments：<%= @comments.count %></h5>
+        <% @comments.each do |music_comment| %>
+        <div class="col-2"><%= attachment_image_tag @music.user,:profile_image, fallback: "no_image.jpg",class:"mt-3 rounded-circle" %></div>
+        <div class="col-5">
+          <p>Name:&ensp;<%= music_comment.user.name %></p>
+          <p>Comment:&ensp;<%= music_comment.comment %></p>
+           <% if music_comment.user == current_user %>
+          <p><%= link_to "Edit", edit_music_music_comment_path(music_comment.music,music_comment),method: :get%></p>
+          <div class="comment-delete">
+            <%= link_to "Delete", music_music_comment_path(music_comment.music,music_comment),method: :delete,'data-confirm' => "Do you really want to delete?" %>
+          </div>
+           <% end %>
+        <% end %>
+        </div>
       </div>
     </div>
   </div>
 
 
-<h2>Comments fot this music</h2><span><%= link_to "NEW Comment", new_music_music_comment_path(@music),method: :get%></span>
-<div class="music_comments">
-<h4>Number of comments：<%= @comments.count %></h4>
-<div>
-<%= attachment_image_tag @music.user,:profile_image ,:fill, 100, 100, fallback: "no_image.jpg",size: "100x100"  %>
-<% @comments.each do |music_comment| %>
-  <p>Name:&ensp;<%= music_comment.user.name %></p>
-  <p>Comment:&ensp;<%= music_comment.comment %></p>
-  <% if music_comment.user == current_user %>
-  <p><%= link_to "Edit", edit_music_music_comment_path(music_comment.music,music_comment),method: :get%></p>
-  <div class="comment-delete">
-    <%= link_to "Delete", music_music_comment_path(music_comment.music,music_comment),method: :delete,'data-confirm' => "Do you really want to delete?" %>
-  </div>
-  <% end %>
-<% end %>
-</div>
 <h2>Favorites for this music</h2>
 <div>
 <% if @music.favorited_by?(current_user) %>
