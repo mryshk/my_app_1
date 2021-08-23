@@ -16,7 +16,7 @@ class MusicsController < ApplicationController
     end
 
     def index
-        @musics = Music.all
+        @musics = Music.page(params[:page])
     end
 
     def edit

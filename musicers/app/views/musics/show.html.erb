@@ -5,13 +5,13 @@
       <div class="card mt-4 shadow-lg h-70">
         <%= attachment_image_tag @music, :musicimage ,:fill, 600, 500, fallback: "no_image.jpg",size: "600x500", class:"card-img-top" %>
         <div class="card-body p-5">
-          <p class="card-title">Musician's Name:<%= @music.music_name  %></p>
-          <p class="card-text">Musician’s Caption:<%= @music.music_caption  %></p>
-          <p class="card-text">Musician's Musicvideo:<%= @music.music_url  %></p>
-          <p class="card-text">Date:<%= @music.created_at.strftime('%Y/%m/%d')  %></p>
-          <div id="music_favorite">
+          <p class="card-title"><%= @music.music_name  %></p>
+          <p class="card-text"><%= @music.music_caption  %></p>
+          <p class="card-text"><%= @music.music_url  %></p>
+          <p class="card-text"><%= @music.created_at.strftime('%Y/%m/%d')  %></p>
+          <h5 id="music_favorite">
             <%= render 'favorites/favorite', music: @music %>
-          </div>
+          </h5>
           <% if @music.user == current_user %>
           <button type="button" class="btn btn-link card-link"> <%= link_to "MusicEdit",edit_music_path(@music)%></button>
           <button type="button" class="btn btn-link card-link"><%= link_to "Music Delete",music_path(@music),method: :delete, "data-confirm" => "Do you really delete?"%></button>
@@ -27,7 +27,7 @@
       <table class="table">
         <thead>
           <tr>
-            <th>profile</th>
+            <th>Profile</th>
             <th>comment</th>
             <th></th>
           </tr>
@@ -36,16 +36,22 @@
         <tbody>
           <tr>
             <td>
-              <div><%= attachment_image_tag @music.user,:profile_image ,size:"50x50", fallback: "no_image.jpg",class:"mt-3 rounded-circle" %></div>
+              <%= link_to  user_path(music_comment.user) do %>
+              <div><%= attachment_image_tag music_comment.user,:profile_image ,size:"50x50", fallback: "no_image.jpg",class:"mt-3 rounded-circle" %></div>
               <div><%= music_comment.user.name %></div>
+              <% end %>
             </td>
             <td><%= music_comment.comment %></td>
             <% if music_comment.user == current_user %>
             <td>
-              <%= link_to "Edit", edit_music_music_comment_path(music_comment.music,music_comment),method: :get, class: "btn btn-success btn-sm" %>
+              <button type="button" class="btn btn-outline-info btn-sm">
+              <%= link_to "Edit", edit_music_music_comment_path(music_comment.music,music_comment),method: :get, class: "text-info" %>
+              </button>
             </td>
             <td>
-              <%= link_to "Delete", music_music_comment_path(music_comment.music,music_comment),method: :delete,'data-confirm' => "Do you really want to delete?", class: "btn btn-danger btn-sm"  %>
+              <button type="button" class="btn btn-outline-danger btn-sm ">
+              <%= link_to "Delete", music_music_comment_path(music_comment.music,music_comment),method: :delete,'data-confirm' => "Do you really want to delete?", class: "text-danger"%>
+              </button>
             </td>
             <% end %>
           </tr>

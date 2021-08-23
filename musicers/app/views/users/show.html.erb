@@ -1,10 +1,20 @@
-<h1>Mypage</h1>
-
-<div>
-  <%= attachment_image_tag @user, :profile_image, :fill, 300, 300, fallback: "no_image.jpg",size: "300x300" %>
-  <p>Name：<%= @user.name %></p>
-  <p>introduction：<%= @user.introduction %></p>
- <%= link_to "Edit", edit_user_path(current_user )%>
- <%= link_to "Back", musics_path %>
-
+<div class="container">
+  <h1 class="mt-3"><i class="fas fa-user">Mypage</i></h1>
+  <div class="row">
+    <div class="col-4 mx-auto">
+      <%= attachment_image_tag @user, :profile_image, :fill, 300, 300, fallback: "no_image.jpg",size: "300x300",class: "mt-3 rounded-circle" %>
+      <p class="mt-3">Name：<strong><%= @user.name %></strong></p>
+      <p class="mt-3">introduction：<strong><%= @user.introduction %></strong></p>
+    </div>
+  </div>
+  <%= link_to "Edit", edit_user_path(current_user )%>
+  <%= link_to "Back", musics_path %>
 </div>
+
+
+
+
+
+
+
+<
