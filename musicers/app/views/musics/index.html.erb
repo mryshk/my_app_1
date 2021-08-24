@@ -17,7 +17,7 @@
       <%= attachment_image_tag music, :musicimage,class: "card-img-top"%>
       <% end %>
      <div class="card-body">
-        <p class="card-title"><strong><%= music.music_name %></strong></p>
+        <h4 class="card-title"><strong><%= music.music_name %></strong></h4>
         <p class="card-text　text-wrap"><%= music.music_caption %></p>
         <p class="card-text"><%= music.music_url %></p>
         <span class="card-text">Posted by：<%= music.user.name%></span>&nbsp;<span class="card-text"><%= music.created_at.strftime('%Y/%m/%d') %></span>
