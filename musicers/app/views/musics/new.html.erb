@@ -5,22 +5,22 @@
       <%= form_with model: @music, local: true do |f| %>
       <div>
         <div class="mb-2 mt-3"><strong>Musician's Name</strong></div>
-        <%= f.text_field :music_name %>
+        <%= f.text_field :music_name,class: "form-control" %>
         <small class="form-text text-muted">Please input your music name</small>
       </div>
       <div>
         <div class="mb-2 mt-3" ><strong>Musician’s Caption</strong></div>
-        <%= f.text_area :music_caption  %>
+        <%= f.text_area :music_caption,class: "form-control"  %>
         <small class="form-text text-muted">Please input your music caption</small>
       </div>
       <div>
         <div class="mb-2 mt-3"><strong>Musician's Musicvideo</strong></div>
-        <%= f.text_field :music_url  %>
+        <%= f.text_field :music_url,class: "form-control"  %>
         <small class="form-text text-muted">Please input your music URL</small>
       </div>
       <div>
         <div class="mb-2 mt-3" ><strong>Musician’s image</strong></div>
-        <%= f.attachment_field :musicimage  %>
+        <%= f.attachment_field :musicimage,class: "form-control-file"  %>
         <small class="form-text text-muted">Please input your music image</small>
         <button class="btn btn-info mt-3">Post
           <% f.submit %>
@@ -29,7 +29,13 @@
       <% end %>
     </div>
   </div>
+  <div class="row mt-5">
+    <div class="col-2">
+      <button class="btn btn-primary">
+        <%= link_to :back ,class: "text-light" do%><i class="fas fa-backward">&nbsp;Back</i><% end %>
+      </button>
+    </div>
+ </div>
+
 </div>
 
-
-<span><%= link_to "back",musics_path %></span>
