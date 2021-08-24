@@ -26,9 +26,10 @@ class MusicCommentsController < ApplicationController
     redirect_to music_path(@comment.music)
   end
   def destroy
+    @music = Music.find(params[:music_id])
     @comment = MusicComment.find_by(id: params[:id],music_id: params[:music_id])
     @comment.destroy
-    redirect_to music_path(params[:music_id])
+    @comments = @music.music_comments
   end
 
 private

@@ -12,13 +12,15 @@
           <div class="d-inline" id="music_favorite_<%= @music.id  %>">
               <%= render 'favorites/favorite', music: @music %>
           </div>
-          <div class="d-inline">
+          <div class="d-inline ml-2">
             <i class="fas fa-comments text-info fa-lg"><%= @comments.count %></i>
           </div>
-          <% if @music.user == current_user %>
-          <button type="button" class="btn btn-link card-link"> <%= link_to "MusicEdit",edit_music_path(@music)%></button>
-          <button type="button" class="btn btn-link card-link"><%= link_to "Music Delete",music_path(@music),method: :delete, "data-confirm" => "Do you really delete?"%></button>
-          <% end %>
+          <div class="mt-4">
+            <% if @music.user == current_user %>
+            <button type="button" class="btn btn-outline-info btn-sm"> <%= link_to "Edit",edit_music_path(@music),class: "text-info"%></button>
+            <button type="button" class="btn btn-outline-danger btn-sm"><%= link_to "Delete",music_path(@music),method: :delete, "data-confirm" => "Do you really delete?",class: "text-danger"%></button>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
@@ -27,44 +29,32 @@
     <div class="col-8 mt-5 offset-2">
       <h3><i class="fas fa-comments ">Comments</i></h3>
       <button type="button" class="btn btn-outline-primary btn-block mt-3"><%= link_to new_music_music_comment_path(@music),method: :get do %><i class="fas fa-comments">New post</i><% end %></button>
-      <table class="table mt-3">
+      <div class="table-responsive">
+      <table class="table table-hover mt-3" >
         <thead>
           <tr>
-            <th>Profile</th>
-            <th>comment</th>
-            <th colsapn="4"></th>
+            <th scope="col">Profile</th>
+            <th scope="col">comment</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
           </tr>
         </thead>
-        <% @comments.each do |music_comment| %>
-        <tbody>
-          <tr>
-            <td>
-              <%= link_to  user_path(music_comment.user) do %>
-              <div><%= attachment_image_tag music_comment.user,:profile_image ,size:"50x50", fallback: "no_image.jpg",class:"mt-3 rounded-circle" %></div>
-              <div><%= music_comment.user.name %></div>
-              <% end %>
-            </td>
-            <td><%= music_comment.comment %></td>
-            <% if music_comment.user == current_user %>
-            <td>
-              <button type="button" class="btn btn-outline-info" style="width: 70px">
-              <%= link_to "Edit", edit_music_music_comment_path(music_comment.music,music_comment),method: :get, class: "text-info" %>
-              </button>
-            </td>
-            <td>
-              <button type="button" class="btn btn-outline-danger"  style="width: 70px">
-              <%= link_to "Delete", music_music_comment_path(music_comment.music,music_comment),method: :delete,'data-confirm' => "Do you really want to delete?", class: "text-danger"%>
-              </button>
-            </td>
-            <% end %>
-          </tr>
+        <tbody id="comment">
+          <%= render "music_comments/comment",comments: @comments %>
         </tbody>
-        <% end %>
       </table>
+      </div>
+    </div>
+  </div>
+  <div class="row yt-5">
+    <div class="col-2">
+       <button class="btn btn-primary">
+         <%= link_to :back ,class: "text-light" do%><i class="fas fa-backward">&nbsp;Back</i><% end %>
+       </button>
     </div>
   </div>
 </div>
 
-<span><%= link_to "back",musics_path %></span>
 
 

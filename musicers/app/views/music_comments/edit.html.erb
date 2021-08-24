@@ -1,7 +1,16 @@
-<h1>Music Edit</h1>
-<div class="edit-comment">
-<%= form_with model: @comment,url: music_music_comment_path(@comment),method: :patch, local: true do |f| %>
-  <%= f.text_area :comment, rows:'5'%>
-  <%= f.submit "Comment Post" %>
-<% end %>
+
+<div class="container">
+  <h1 class="mt-5"><i class="far fa-comments">Edit Comment</i></h1>
+  <div class="row mt-5">
+    <div class="col-8 offset-2 col-md-10 offset-md-1">
+      <%= form_with model: @comment,url: music_music_comment_path(@comment),method: :patch, local: true do |f| %>
+      <div>
+        <%= f.text_area :comment, rows:'5',placeholder: "Comment" ,class: "form-control" %>
+      </div>
+      <button class="btn btn-info mt-4" style="width:100px">Update
+        <% f.submit %>
+      </button>
+      <% end %>
+    </div>
+  </div>
 </div>

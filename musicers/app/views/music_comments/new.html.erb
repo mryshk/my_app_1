@@ -1,6 +1,15 @@
-<div class="new-comment">
-<%= form_with(model:[@music, @music_comment], local: true) do |f| %>
-  <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
-  <%= f.submit "Comment Post" %>
-<% end %>
+<div class="container">
+  <h1 class="mt-5"><i class="far fa-comments">Comment</i></h1>
+  <div class="row mt-5">
+    <div class="col-8 offset-2 col-md-10 offset-md-1">
+      <%= form_with(model:[@music, @music_comment], local: true) do |f| %>
+      <div>
+        <%= f.text_area :comment, rows:'5',placeholder: "Comment" ,class: "form-control" %>
+      </div>
+      <button class="btn btn-info mt-4" style="width:100px">Post
+        <% f.submit %>
+      </button>
+      <% end %>
+    </div>
+  </div>
 </div>
