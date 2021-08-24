@@ -21,7 +21,14 @@
   </div>
   <% end %>
  </div>
-</div>
-<div class="mt-5 offset-5">
-<%= paginate @musics %>
+ <div class="row mt-5">
+    <div class="col-2">
+      <button class="btn btn-primary">
+        <%= link_to :back ,class: "text-light" do%><i class="fas fa-backward">&nbsp;Back</i><% end %>
+      </button>
+    </div>
+    <div class="offset-3 col-5">
+    <%= paginate @musics %>
+    </div>
+ </div>
 </div>
