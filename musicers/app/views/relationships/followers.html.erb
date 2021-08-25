@@ -1,0 +1,31 @@
+
+<div class="container">
+  <h2>Follower Users</h2>
+  <div class="row">
+    <div class="col-8 offset-2">
+    <tablet class="table">
+      <% if @users.exists?  %>
+      <thead>
+        <tr>
+          <th>name</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user|  %>
+        <tr>
+          <td><%= user.name %></td>
+          <td><i class="fas fa-user-check">follow:<%= user.followings.count %></i></td>
+          <td><i class="fas fa-user-friends">follower:<%= user.followers.count %></i></td>
+        </tr>
+        <% end %>
+      </tbody>
+
+    </table>
+    <% else %>
+      <p>No Users</p>
+    <% end %>
+    </div>
+  </div>
+</div>

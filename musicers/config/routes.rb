@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   root to: 'homes#top'
 
   resources :users, only: [:show,:edit,:update] do
-    resources :relationships, only: [:create,:destroy]
+    resource :relationships, only: [:create,:destroy]
+    get 'followings' => 'relationships#followings', as: 'followings'
+    get 'followers' => 'relationships#followers', as: 'followers'
   end
   resources :musics, only: [:new, :create, :index, :show, :destroy, :edit,:update] do
     resource :favorites ,only:[:create,:destroy]
