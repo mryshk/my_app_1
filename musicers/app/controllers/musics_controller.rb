@@ -6,7 +6,6 @@ class MusicsController < ApplicationController
     def create
         @music = Music.new(music_params)
         @music.user_id = current_user.id
-        binding.pry
         @music.save
         redirect_to music_path(@music)
     end
@@ -43,6 +42,6 @@ class MusicsController < ApplicationController
 
    private
    def music_params
-       params.require(:music).permit(:musicimage,:music_name,:music_caption,:music_url)
+       params.require(:music).permit(:musicimage,:music_name,:music_caption,:music_url,:music_genre)
    end
 end
