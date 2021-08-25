@@ -35,6 +35,10 @@ class MusicsController < ApplicationController
         @music.destroy
         redirect_to musics_path
     end
+    
+    def home
+        @musics = Music.where(user_id:[current_user,*current_user.following_ids]).page(params[:page])
+    end
 
    private
    def music_params

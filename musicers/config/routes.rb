@@ -13,5 +13,7 @@ Rails.application.routes.draw do
     resources :music_comments, only:[:new,:create,:edit,:destroy,:update]
   end
 
+  get 'home' => 'musics#home', as: 'home'
+
 
 end
