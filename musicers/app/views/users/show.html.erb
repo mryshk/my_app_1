@@ -42,9 +42,10 @@
         <%= attachment_image_tag music, :musicimage,class: "card-img-top"%>
         <% end %>
       <div class="card-body">
-          <p class="card-title"><strong><%= music.music_name %></strong></p>
+          <h4 class="card-title"><strong><%= music.music_name %></strong></h4>
           <p class="card-text　text-wrap"><%= music.music_caption %></p>
           <iframe width="300" height="200" src="https://www.youtube.com/embed/<%= music.music_url.last(11) %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <i class="card-text"><%= music.music_genre %></i>
           <div class="card-text" >
             <%= link_to user_path(music.user),class: "text-dark" do %>
             <div>

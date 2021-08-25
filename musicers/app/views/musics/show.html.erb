@@ -8,6 +8,7 @@
           <h4 class="card-title"><strong><%= @music.music_name  %></strong></h4>
           <p class="card-text"><%= @music.music_caption  %></p>
           <iframe class="my-3" width="500" height="300" src="https://www.youtube.com/embed/<%= @music.music_url.last(11)  %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <p class="card-text"><%= @music.music_genre %></p>
           <div class="card-text mb-3" >
             <%= link_to user_path(@music.user),class: "text-dark" do %>
             <div>
