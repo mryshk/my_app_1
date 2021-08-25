@@ -2,30 +2,42 @@
 <div class="container">
   <h2>Follower Users</h2>
   <div class="row">
+    <% if @users.exists?  %>
     <div class="col-8 offset-2">
-    <tablet class="table">
-      <% if @users.exists?  %>
+    <table class="table">
       <thead>
         <tr>
           <th>name</th>
-          <th></th>
-          <th></th>
+          <th>Follow</th>
+          <th>Follower</th>
         </tr>
       </thead>
       <tbody>
         <% @users.each do |user|  %>
         <tr>
-          <td><%= user.name %></td>
-          <td><i class="fas fa-user-check">follow:<%= user.followings.count %></i></td>
-          <td><i class="fas fa-user-friends">follower:<%= user.followers.count %></i></td>
+          <td>
+            <%= link_to user_path(user.id)do %>
+            <div>
+              <%= attachment_image_tag user, :profile_image,size:"50x50", fallback: "no_image.jpg",class: "rounded-circle"%>
+            </div>
+            <div>
+              <i class="text-dark ml-2"><%= user.name %></i>
+            </div>
+            <% end %>
+          </td>
+            </div>
+          <td><%= link_to user_followings_path(user),class:"text-dark"  do %><i class="fas fa-user-check fa-lg mt-3"><%= user.followings.count %></i><% end %></td>
+          <td><%= link_to user_followers_path(user),class:"text-dark"  do %><i class="fas fa-user-friends fa-lg mt-3"><%= user.followers.count %></i><% end %></td>
         </tr>
         <% end %>
       </tbody>
 
     </table>
-    <% else %>
-      <p>No Users</p>
-    <% end %>
     </div>
   </div>
 </div>
+<% else %>
+<div class="text-center">
+  <h1><i class="fas fa-users-slash">&nbsp;No Users</h1></i>
+</div>
+<% end %>

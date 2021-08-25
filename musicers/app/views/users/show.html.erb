@@ -13,8 +13,8 @@
       </div>
 
       <div class="my-4">
-        <i class="fas fa-user-check fa-lg mr-3">Follow:&ensp;<%= @user.followings.count %></i>
-        <i class="fas fa-user-friends fa-lg">Follower:&ensp;<%= @user.followers.count %></i>
+        <i class="fas fa-user-check fa-lg mr-3"><%= link_to user_followings_path(@user) do %>Follow:&ensp;<%= @user.followings.count %><% end %></i>
+        <i class="fas fa-user-friends fa-lg"><%= link_to user_followers_path(@user) do %>Follower:&ensp;<%= @user.followers.count %><% end %></i>
       </div>
       <div class="mt-3">
         <button class="btn btn-outline-info btn-block">
