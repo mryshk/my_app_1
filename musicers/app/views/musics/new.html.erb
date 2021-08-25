@@ -10,13 +10,22 @@
       </div>
       <div>
         <div class="mb-2 mt-3" ><strong>Musician’s Caption</strong></div>
-        <%= f.text_area :music_caption,class: "form-control"  %>
+        <%= f.text_area :music_caption,rows:"5",class: "form-control"  %>
         <small class="form-text text-muted">Please input your music caption</small>
       </div>
       <div>
         <div class="mb-2 mt-3"><strong>Musician's Musicvideo</strong></div>
         <%= f.text_field :music_url,class: "form-control"  %>
         <small class="form-text text-muted">Please input your music URL</small>
+      </div>
+      <div>
+        <div class="mb-2 mt-3"><strong>Musician's Genre</strong></div>
+        <%= f.radio_button :music_genre, :Rock %><%= f.label :music_genre, "Rock", {value: :Rock, style: "display: inline-block;"} %>
+        <%= f.radio_button :music_genre, :POP %>POP
+        <%= f.radio_button :music_genre, :Pank %>Pank
+        <%= f.radio_button :music_genre, :Idle %>Idle
+        <%= f.radio_button :music_genre, :EDM %>EDM
+        <small class="form-text text-muted mt-2">Please check your music genre</small>
       </div>
       <div>
         <div class="mb-2 mt-3" ><strong>Musician’s image</strong></div>

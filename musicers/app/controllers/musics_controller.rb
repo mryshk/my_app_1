@@ -6,6 +6,7 @@ class MusicsController < ApplicationController
     def create
         @music = Music.new(music_params)
         @music.user_id = current_user.id
+        binding.pry
         @music.save
         redirect_to music_path(@music)
     end
@@ -16,7 +17,7 @@ class MusicsController < ApplicationController
     end
 
     def index
-        @musics = Music.page(params[:page])
+        @musics = Music.page(params[:page]).reverse_order
     end
 
     def edit
@@ -35,9 +36,9 @@ class MusicsController < ApplicationController
         @music.destroy
         redirect_to musics_path
     end
-    
+
     def home
-        @musics = Music.where(user_id:[current_user,*current_user.following_ids]).page(params[:page])
+        @musics = Music.where(user_id:[current_user,*current_user.following_ids]).page(params[:page]).reverse_order
     end
 
    private
