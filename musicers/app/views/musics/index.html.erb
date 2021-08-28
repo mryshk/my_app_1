@@ -17,15 +17,15 @@
 
  <%=  render "index", musics: @musics %>
 
- <div class="row　mt-5 " style ="width : 100% ">
+  <div class="row mt-5">
     <div class="col-2">
-      <button class="btn btn-primary">
+      <button class="btn btn-primary ">
         <%= link_to :back ,class: "text-light" do%><i class="fas fa-backward">&nbsp;Back</i><% end %>
       </button>
     </div>
-    <div class=" col-8">
-    <%= paginate @musics %>
+    <div class="mx-auto">
+      <%= paginate @musics %>
     </div>
- </div>
+  </div>
 </div>
 

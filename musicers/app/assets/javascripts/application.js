@@ -22,7 +22,7 @@
 /* global $ */
 
 
-$(document).ready(function () {
+$(document).on('turbolinks:load',function () {
   $("#theTarget").skippr({
     // スライドショーの変化 ("fade" or "slide")
     transition : 'fade',
@@ -45,4 +45,25 @@ $(document).ready(function () {
     // 一枚目のスライド表示時に戻る矢印を表示するかどうか(falseで非表示)
     hidePrevious : false
   });
+});
+
+$(document).on('turbolinks:load',function(){
+  $('#page-top').on('click',function(event){
+    $('body,html').animate({
+      scrollTop:0
+    },800);
+    event.preventDefault();
+  });
+});
+
+$(document).on('turbolinks:load',function() {
+    var pagetop = $('#page-top');
+    pagetop.hide();
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 100) {  //100pxスクロールしたら表示
+            pagetop.fadeIn();
+        } else {
+            pagetop.fadeOut();
+        }
+    });
 });
