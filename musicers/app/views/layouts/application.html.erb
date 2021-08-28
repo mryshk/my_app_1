@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -17,7 +14,17 @@
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#e3f2fd; height:65px;">
       <div class="container">
         <a class="navbar-brand mr-auto" href="/"><i class="fas fa-headphones-alt">Musicers</i></a>
-        <div id="sp-menu">
+        <div id="hm-icon">
+          <a class="menu-trigger" href="#">
+            <span></span>
+            <span></span>
+            <span></span>
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <div id="sp-menu">
           <ul class="navbar-nav ml-auto">
             <% if user_signed_in? %>
             <li class="nav-item">
@@ -45,16 +52,6 @@
             <% end %>
           </ul>
         </div>
-        <div id="hm-icon">
-          <a class="menu-trigger" href="#">
-            <span></span>
-            <span></span>
-            <span></span>
-          </a>
-        </div>
-      </div>
-    </nav>
-  </header>
 
 
   <%= yield %>
