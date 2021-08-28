@@ -6,41 +6,9 @@
 </div>
 <div class="container">
   <h1 class="text-center my-5"><i class="fas fa-user-clock">&nbsp;Timeline</i></h1>
-  <div class="row mt-5">
-  <% @musics.each do |music| %>
-    <div class="col-8  offset-2 my-4 mb-3">
-      <div class="card mt-4 shadow-lg h-100">
-        <%= link_to music_path(music) do %>
-        <%= attachment_image_tag music, :musicimage,class: "card-img-top"%>
-        <% end %>
-        <div class="card-body ">
-          <h4 class="card-title"><strong><%= music.music_name %></strong></h4>
-          <p class="card-text　text-wrap"><%= music.music_caption %></p>
-          <iframe class="my-3 mx-auto" width="500" height="300" src="https://www.youtube.com/embed/<%= music.music_url.last(11)  %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          <div class="card-text" >
-            <%= link_to user_path(music.user),class: "text-dark" do %>
-            <div>
-              <%= attachment_image_tag music.user,:profile_image ,size:"50x50", fallback: "no_image.jpg",class:"mt-3 rounded-circle" %>
-            </div>
-            <div class=" mt-1"><%= music.user.name%></div>
-            <% end %>
 
-            <div class="my-3">
-              <button type="button" class="btn btn-outline-info"><%= link_to music_path(music), class: "text-info" do%><i class="fas fa-eye ">&nbsp;Detail</i><% end %></button>
-            </div>
-            <div class="d-inline" id="music_favorite_<%= music.id %>">
-                <%= render 'favorites/favorite', music: music %>
-            </div>
-            <div class="d-inline ml-2">
-                <i class="fas fa-comments text-info fa-lg"><%= music.music_comments.count %></i>
-            </div>
-            <div class="text-right mt-3"><%= time_ago_in_words(music.created_at) %></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  <% end %>
-  </div>
+  <%= render "musics/index",musics: @musics %>
+
   <div class="row mt-5">
     <div class="col-2">
       <button class="btn btn-primary ">
