@@ -1,11 +1,6 @@
-<div>
-  <%= form_with url: search_path, method: :get, local: true do |f| %>
-    <%= f.text_field :keyword, value: @keyword %>
-    <%= f.submit "Search" %>
-  <% end %>
-</div>
+
 <div class="music-list">
-  <% @musics.each do |music| %>
-  <%= music.music_name %>
+  <% @search.each do |search| %>
+  <%= search.music_name %>
   <% end %>
 </div>
