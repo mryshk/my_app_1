@@ -20,6 +20,7 @@
 //= require_tree .
 
 /* global $ */
+/* global click */
 
 
 $(document).on('turbolinks:load',function () {
@@ -106,3 +107,12 @@ $(document).on('turbolinks:load',function(){
   ScrollAnime();//スクロール途中でヘッダーが消え、上にスクロールすると復活する関数を呼ぶ
   });
 })
+
+$(document).on('turbolinks:load',function(){
+  $('#search').on('click',function(event){
+    $("+ #search-form",this).slideToggle();
+    event.preventDefault();
+  });
+});
+
+
