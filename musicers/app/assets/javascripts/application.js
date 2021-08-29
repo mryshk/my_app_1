@@ -101,6 +101,8 @@ function ScrollAnime() {
 
 
 // 画面をスクロールをしたら動かしたい場合の記述
-$(window).scroll(function () {
+$(document).on('turbolinks:load',function(){
+  $(window).scroll(function () {
   ScrollAnime();//スクロール途中でヘッダーが消え、上にスクロールすると復活する関数を呼ぶ
-});
+  });
+})
