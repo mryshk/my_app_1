@@ -36,6 +36,12 @@ class MusicsController < ApplicationController
         redirect_to musics_path
     end
 
+    def search
+        @musics = Music.search(params[:keyword])
+        @keyword = params[:keyword]
+        render "search"
+    end
+
     def home
         @musics = Music.where(user_id:[current_user,*current_user.following_ids]).page(params[:page]).reverse_order
     end

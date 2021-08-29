@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   end
 
   get 'home' => 'musics#home', as: 'home'
-
+  
+  get 'search' => 'musics#search', as: 'search'
 
 end
