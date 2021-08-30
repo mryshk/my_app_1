@@ -108,13 +108,13 @@ $(document).on('turbolinks:load',function(){
   });
 })
 
-$(document).on('tutbolinks:load', function(){
-  $('#search-form').hide();
-});
 
 $(document).on('turbolinks:load',function(){
   $('#search').on('click',function(event){
-    $("#search-form").fadeToggle();
+    $("#search-form").fadeToggle(500);
+    $('body,html').animate({
+      scrollTop:0
+    },800);
     event.preventDefault();
   });
 });
