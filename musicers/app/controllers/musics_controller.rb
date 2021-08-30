@@ -37,7 +37,7 @@ class MusicsController < ApplicationController
     end
 
     def search
-        @search = Music.search(params[:keyword])
+        @search = Music.search(params[:keyword]).page(params[:page]).reverse_order
         @keyword = params[:keyword]
         render "search"
     end

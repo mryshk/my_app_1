@@ -1,6 +1,6 @@
 
-<div class="music-list">
-  <% @search.each do |search| %>
-  <%= search.music_name %>
-  <% end %>
+<div class="container mt-4 ">
+<h1><i class="fab fa-searchengin">Search result</i></h1>
+  <%= render "musics/index", musics: @search %>
+
 </div>

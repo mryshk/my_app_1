@@ -108,9 +108,13 @@ $(document).on('turbolinks:load',function(){
   });
 })
 
+$(document).on('tutbolinks:load', function(){
+  $('#search-form').hide();
+});
+
 $(document).on('turbolinks:load',function(){
   $('#search').on('click',function(event){
-    $("+ #search-form",this).slideToggle();
+    $("#search-form").fadeToggle();
     event.preventDefault();
   });
 });
