@@ -1,0 +1,21 @@
+<div  class="container" style="margin-top:200px;">
+<h1 class="my-4 text-center"><i class="fas fa-users">Groups</i></h1>
+<div class="row mb-5" >
+  <% @groups.each do |group| %>
+  <div class="col-lg-5  offset-lg-1  col-8 offset-2" style="margin-top: 150px; " >
+    <div class="card mt-4 shadow-lg h-100" >
+      <div class="card-body">
+        <div>
+          <%= link_to group_path(group) do %>
+            <h4 class="card-title"><strong><%= group.name %></strong></h4>
+            <%= attachment_image_tag group,:image ,size:"50x50", fallback: "no_image.jpg",class:"mt-3 rounded-circle" %>
+          <% end %>
+        </div>
+        <p class="card-text　text-wrap"><%= group.introduction %></p>
+        <%= link_to "New", new_group_path %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+</div>
