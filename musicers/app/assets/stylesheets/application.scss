@@ -110,14 +110,14 @@ background-color: #e3f2fd;
 
 
 #search-form{
-  display: none;
   background-color: #e3f2fd;
+  display: none;
+}
+.search-box{
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
-
 
 
 @media (max-width: 992px){
