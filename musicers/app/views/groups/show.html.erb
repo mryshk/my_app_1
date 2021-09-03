@@ -10,6 +10,7 @@
           <% @group.users.each do |user|%>
           <p><%= user.name  %></p>
           <% end %>
+           <button type="button" class="btn "> <%= link_to edit_group_path(@group),class: "text-info" do%><i class="fas fa-edit">Edit</i><% end %></button>
         </div>
       </div>
     </div>
