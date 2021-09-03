@@ -10,8 +10,12 @@
           <% @group.users.each do |user|%>
           <p><%= user.name  %></p>
           <% end %>
-           <button type="button" class="btn "> <%= link_to edit_group_path(@group),class: "text-info" do%><i class="fas fa-edit">Edit</i><% end %></button>
-            <button type="button" class="btn "><%= link_to group_path(@group),method: :delete, "data-confirm" => "Do you really delete?",class: "text-danger" do%><i class="fas fa-trash-alt">Delete</i><% end %></button>
+           <% if @group.owner_id == current_user.id %>
+             <button type="button" class="btn "> <%= link_to edit_group_path(@group),class: "text-info" do%><i class="fas fa-edit">Edit</i><% end %></button>
+             <button type="button" class="btn "><%= link_to group_path(@group),method: :delete, "data-confirm" => "Do you really delete?",class: "text-danger" do%><i class="fas fa-trash-alt">Delete</i><% end %></button>
+           <% end %>
+           <button type="button" class="btn "> <%= link_to group_group_users_path(@group),method: :post ,class: "text-info" do%><i class="fas fa-edit">Join this Group</i><% end %></button>
+
         </div>
       </div>
     </div>

@@ -1,15 +1,14 @@
 class GroupsController < ApplicationController
   def new
     @group = Group.new
-    @group.users << current_user
 
   end
 
   def create
     @group = Group.new(group_params)
-     binding.pry
+    @group.owner_id = current_user.id
     if @group.save
-      redirect_to musics_path
+      redirect_to groups_path
     else
       render :new
     end

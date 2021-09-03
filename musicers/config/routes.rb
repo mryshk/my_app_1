@@ -13,7 +13,9 @@ Rails.application.routes.draw do
     resources :music_comments, only:[:new,:create,:edit,:destroy,:update]
   end
 
-  resources :groups ,only:[:new,:create,:edit,:update,:show,:index,:destroy]
+  resources :groups ,only:[:new,:create,:edit,:update,:show,:index,:destroy] do
+    resources :group_users,only:[:create,:destroy]
+  end
 
   get 'home' => 'musics#home', as: 'home'
 
