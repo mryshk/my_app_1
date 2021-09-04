@@ -9,7 +9,7 @@
             <th>image</th>
             <th>name</th>
             <th>Follow</th>
-            <th></th>
+            <th>Chat</th>
           </tr>
         </thead>
         <tbody>
@@ -22,6 +22,11 @@
                 <%= link_to user_relationships_path(group_user.user_id), method: :delete ,class: "text-info" do %><i class="fas fa-user-slash">&nbsp;Unfollow</i><% end %>
               <% else %>
                 <%= link_to user_relationships_path(group_user.user_id), method: :post,class: "text-info"   do %><i class="fas fa-user-check">&nbsp;Follow</i><% end %>
+              <% end %>
+            </td>
+            <td class="align-middle">
+              <%= link_to groups_path do %>
+                <div type="btn" class="btn btn-info" >Chat</div>
               <% end %>
             </td>
           </tr>
