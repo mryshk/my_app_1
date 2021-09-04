@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   end
 
   resources :groups ,only:[:new,:create,:edit,:update,:show,:index,:destroy] do
-    resources :group_users,only:[:create,:destroy]
+    resources :group_users,only:[:create,:destroy,:index]
   end
 
   get 'home' => 'musics#home', as: 'home'
