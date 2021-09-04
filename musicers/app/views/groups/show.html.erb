@@ -1,5 +1,5 @@
 <div class="container">
-  <h1 class="mt-3 ml-4" id="area-1"><i class="fas fa-music">&nbsp;Posted Music</i></h1>
+  <h1 class="mt-3 ml-4" id="area-1"><i class="fas fa-music">&nbsp;Group detail</i></h1>
   <div class="row mt-4">
     <div class="col-8 my-4 offset-2">
       <div class="card mt-4 shadow-lg h-70">
@@ -7,10 +7,10 @@
         <div class="card-body p-5">
           <h4 class="card-title"><strong><%= @group.name  %></strong></h4>
           <p class="card-text"><%= @group.introduction  %></p>
-          <button class="btn"><%= @group.users.count %></button>
-          
+          <button class="btn"><%= link_to group_group_users_path(@group) do %><%= @group.users.count %><% end %></button>
 
-          
+
+
            <% if @group.owner_id == current_user.id %>
              <button type="button" class="btn "> <%= link_to edit_group_path(@group),class: "text-info" do%><i class="fas fa-edit">Edit</i><% end %></button>
              <button type="button" class="btn "><%= link_to group_path(@group),method: :delete, "data-confirm" => "Do you really delete?",class: "text-danger" do%><i class="fas fa-trash-alt">Delete</i><% end %></button>

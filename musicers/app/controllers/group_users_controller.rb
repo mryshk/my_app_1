@@ -14,9 +14,10 @@ class GroupUsersController < ApplicationController
     @group_user.destroy
     redirect_to group_path(@group)
   end
-  
+
   def index
-    
+    @group = Group.find(params[:group_id])
+    @group_users = @group.group_users
   end
 
 end

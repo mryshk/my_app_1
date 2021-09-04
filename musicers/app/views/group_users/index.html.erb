@@ -1,0 +1,30 @@
+<div class="container">
+  <h1 class="text-center my-5">Group Member</h1>
+  <div class="row">
+    <div class="col-8 mx-auto">
+    <% if @group_users.exists?  %>
+      <table>
+        <thead>
+          <tr>
+            <th>image</th>
+            <th>name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @group_users.each do |group_user|  %>
+          <tr>
+            <td><%= attachment_image_tag group_user.user, :profile_image, size: "50x50", fallback: "no_image.jpg",class: "mt-3 rounded-circle"  %></td>
+            <td> <%= group_user.user.name %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <h1 class="text-center mt-5 ">No Member</h1>
+    <% end %>
+    </div>
+  </div>
+</div>
+
+
+
