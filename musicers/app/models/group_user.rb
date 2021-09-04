@@ -8,4 +8,6 @@ class GroupUser < ApplicationRecord
     followings.where(followed_id: user.id).exists?
   end
 
+ 
+
 end

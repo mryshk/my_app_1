@@ -15,9 +15,12 @@ class GroupUsersController < ApplicationController
     redirect_to group_path(@group)
   end
 
+
   def index
     @group = Group.find(params[:group_id])
     @group_users = @group.group_users
+    @group_follows = GroupUser.joins(user: :followings).where(user_id: current_user)
+    
   end
 
 end

@@ -9,4 +9,6 @@ class Group < ApplicationRecord
     group_users.where(user_id: user.id).exists?
   end
   
+  
+  
 end

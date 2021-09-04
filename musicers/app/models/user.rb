@@ -23,6 +23,9 @@ class User < ApplicationRecord
     followings.include?(user)
   end
 
+  def followed?(user)
+    followers.include?(user)
+  end
 
   attachment :profile_image
   has_many :musics, dependent: :destroy
