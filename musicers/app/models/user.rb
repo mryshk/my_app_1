@@ -28,7 +28,7 @@ class User < ApplicationRecord
   has_many :musics, dependent: :destroy
   has_many :music_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  
+
   has_many :group_users
   has_many :groups, through: :group_users
-end 
+end
