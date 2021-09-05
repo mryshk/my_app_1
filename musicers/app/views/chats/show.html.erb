@@ -1,7 +1,7 @@
 <div class="container">
-  <h1 class="my-4">ChatRoom</h1>
+  <h1 class="my-4 text-center">ChatRoom</h1>
   <div class="row mt-4">
-    <div class="col-8 mx-auto">
+    <div class="col-8 ">
       <% if @chats.present?  %>
         <% @chats.each do |chat| %>
           <% if chat.user_id == current_user.id  %>
@@ -29,7 +29,7 @@
       <div>
         <%= form_with model:@chat do |f| %>
         <%= f.text_field :message, placeholder: "Message", class: "form-inline form-control", size:"30" %>
-        <%= f.hidden_field :room_id, value: room_id %>
+        <%= f.hidden_field :room_id  %>
       </div>
       <button class=" btn btn-info btn-sm ml-4"　type="submit"><i class="fab fa-telegram-plane"><%f.submit %></i></button>
         <% end %>
