@@ -19,12 +19,12 @@ class ChatsController < ApplicationController
 
   def create
     @chat = current_user.chats.new(chat_params)
-    @chat.save
-
     @room = @chat.room_id
     @chat_n = Chat.new(room_id: @room)
     @chats = Chat.where(room_id: @room)
+   @chat.save
   end
+
 
   private
   def chat_params

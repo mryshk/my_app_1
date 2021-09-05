@@ -24,7 +24,7 @@
 
       <div class="posts mb-4" style="margin-top:300px;">
       <div style="width:400px;">
-        <%= form_with model: chat do |f| %>
+        <%= form_with model: chat, local: false do |f| %>
         <%= f.text_field :message, placeholder: "Message", class: "form-inline form-control", size:"30" %>
         <%= f.hidden_field :room_id  %>
       </div>
