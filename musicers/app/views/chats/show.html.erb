@@ -5,7 +5,7 @@
       <% if @chats.present?  %>
         <% @chats.each do |chat| %>
           <% if chat.user_id == current_user.id  %>
-            <div class="speech-bubble">
+            <div class="speech-bubble mt-3">
               <div class="sb-bubble sb-line1 sb-right mt-2">
                 <strong><%= chat.message %></strong>
               </div>
@@ -16,7 +16,7 @@
                 <%= attachment_image_tag chat.user,:profile_image,:fill,40,40, fallback: "no_image.jpg",size: '40x40' ,class: "user-image" %>
               <% end %>
             </div>
-            <div class="speech-bubble">
+            <div class="speech-bubble mt-3">
               <div class="sb-bubble sb-line1 sb-left mt-2">
                 <strong><%= chat.message %></strong>
               </div>
@@ -25,7 +25,7 @@
         <% end %>
       <% end %>
 
-      <div class="posts mt-4 mb-5">
+      <div class="posts mb-4" style="margin-top:300px;">
       <div style="width:400px;">
         <%= form_with model:@chat do |f| %>
         <%= f.text_field :message, placeholder: "Message", class: "form-inline form-control", size:"30" %>
