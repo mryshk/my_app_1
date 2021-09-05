@@ -1,12 +1,12 @@
 <div class="container">
   <h1 class="my-4 text-center">ChatRoom</h1>
   <div class="row mt-4">
-    <div class="col-8 ">
+    <div class="col-6 offset-3">
       <% if @chats.present?  %>
         <% @chats.each do |chat| %>
           <% if chat.user_id == current_user.id  %>
             <div class="speech-bubble">
-              <div class="sp-bubble sp-line1 sp-right mt-2">
+              <div class="sb-bubble sb-line1 sb-right mt-2">
                 <strong><%= chat.message %></strong>
               </div>
             </div>
@@ -17,22 +17,23 @@
               <% end %>
             </div>
             <div class="speech-bubble">
-              <div class="sp-bubble sp-line1 sp-left mt-2">
+              <div class="sb-bubble sb-line1 sb-left mt-2">
                 <strong><%= chat.message %></strong>
               </div>
             </div>
           <% end %>
         <% end %>
       <% end %>
-    </div>
-    <div class="posts mt-4 mb-5">
-      <div>
+
+      <div class="posts mt-4 mb-5">
+      <div style="width:400px;">
         <%= form_with model:@chat do |f| %>
         <%= f.text_field :message, placeholder: "Message", class: "form-inline form-control", size:"30" %>
         <%= f.hidden_field :room_id  %>
       </div>
-      <button class=" btn btn-info btn-sm ml-4"　type="submit"><i class="fab fa-telegram-plane"><%f.submit %></i></button>
+      <button class=" btn btn-info btn-sm " sryle="width: 100px;"><i class="fab fa-telegram-plane">Send<%f.submit %></i></button>
         <% end %>
+    </div>
     </div>
   </div>
 </div>
