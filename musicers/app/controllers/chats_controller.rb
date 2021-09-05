@@ -20,13 +20,14 @@ class ChatsController < ApplicationController
   def create
     @chat = current_user.chats.new(chat_params)
     @chat.save
-    redirect_to request.referer
+
+    @room = @chat.room_id
+    @chat_n = Chat.new(room_id: @room)
+    @chats = Chat.where(room_id: @room)
   end
 
   private
   def chat_params
     params.require(:chat).permit(:message, :room_id)
   end
-
-
 end
