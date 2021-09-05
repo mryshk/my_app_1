@@ -17,6 +17,9 @@ Rails.application.routes.draw do
     resources :group_users,only:[:create,:destroy,:index]
   end
 
+  get 'chat/:id' => 'chats#show',as: 'chat'
+  resources :chats, only:[:create]
+
   get 'home' => 'musics#home', as: 'home'
 
   get 'search' => 'musics#search', as: 'search'
