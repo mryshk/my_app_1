@@ -1,21 +1,38 @@
-<%= form_with model: @chat do |f| %>
-    <%= f.text_field :message %>
-    <%= f.hidden_field :room_id %>
-    <%= f.submit %>
-<% end %>
-<table>
-    <thead>
-        <tr>
-            <td>投稿者名</td>
-            <td>投稿内容</td>
-        </tr>
-    </thead>
-    <tbody>
+<div class="container">
+  <h1 class="my-4">ChatRoom</h1>
+  <div class="row mt-4">
+    <div class="col-8 mx-auto">
+      <% if @chats.present?  %>
         <% @chats.each do |chat| %>
-            <tr>
-                <td><%= chat.user.name %></td>
-                <td><%= chat.message %></td>
-            </tr>
+          <% if chat.user_id == current_user.id  %>
+            <div class="speech-bubble">
+              <div class="sp-bubble sp-line1 sp-right mt-2">
+                <strong><%= chat.message %></strong>
+              </div>
+            </div>
+          <% else %>
+            <div>
+              <%= link_to user_path(chat.user) do %>
+                <%= attachment_image_tag chat.user,:profile_image,:fill,40,40, fallback: "no_image.jpg",size: '40x40' ,class: "user-image" %>
+              <% end %>
+            </div>
+            <div class="speech-bubble">
+              <div class="sp-bubble sp-line1 sp-left mt-2">
+                <strong><%= chat.message %></strong>
+              </div>
+            </div>
+          <% end %>
         <% end %>
-    </tbody>
-</table>
+      <% end %>
+    </div>
+    <div class="posts mt-4 mb-5">
+      <div>
+        <%= form_with model:@chat do |f| %>
+        <%= f.text_field :message, placeholder: "Message", class: "form-inline form-control", size:"30" %>
+        <%= f.hidden_field :room_id, value: room_id %>
+      </div>
+      <button class=" btn btn-info btn-sm ml-4"　type="submit"><i class="fab fa-telegram-plane"><%f.submit %></i></button>
+        <% end %>
+    </div>
+  </div>
+</div>
