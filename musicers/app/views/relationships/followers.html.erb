@@ -30,11 +30,11 @@
           <td><%= link_to user_followings_path(user),class:"text-dark"  do %><i class="fas fa-user-check fa-lg mt-3"><%= user.followings.count %></i><% end %></td>
           <td><%= link_to user_followers_path(user),class:"text-dark"  do %><i class="fas fa-user-friends fa-lg mt-3"><%= user.followers.count %></i><% end %></td>
           <td>
-            <div class="btn btn-info">
-              <% if (current_user.followers.include? user)  && (user.followers.include? current_user )%>
-                <%= link_to chat_path(user.id)  %>
+            <% if (current_user.followers.include? user)  && (user.followers.include? current_user )%>
+              <%= link_to chat_path(user.id) do  %>
+                <div class="btn btn-info">Chat</div>
               <% end %>
-            </div>
+            <% end %>
           </td>
         </tr>
         <% end %>
