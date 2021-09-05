@@ -27,7 +27,7 @@
             <td class="align-middle">
               <% if (current_user.followings.exists? group_user.user_id)  && (group_user.user.followings.exists? current_user.id )%>
                 <%= link_to chat_path(group_user.user_id) do  %>
-                <div class="btn btn-info">Chat</div>
+                <div class="btn btn-info"><i class="far fa-envelope">Chat</i></div>
                 <% end %>
               <% end %>
             </td>
