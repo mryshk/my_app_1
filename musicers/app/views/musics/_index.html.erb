@@ -13,29 +13,21 @@
       </div>
       <div class="card-body">
         <%# 曲名とアーティスト名 %>
-        <h4 class="card-title">「<strong><%= @music.music_name  %></strong>」   <%= @music.artist_name  %></h4>
+        <h4 class="card-title text-center">「<strong><%= music.music_name  %></strong>」   <%= music.artist_name  %></h4>
         <%# 説明 %>
-        <p class="card-text　text-wrap"><%= music.music_caption %></p>
+        <p class="card-text text-center"><%= music.music_caption %></p>
         <%# YOUTUBE %>
         <div class="youtube">
           <iframe width="300" height="200" src="https://www.youtube.com/embed/<%= music.music_url.last(11) %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <%# ジャンル %>
-        <div class="text-info" style="margin-top:20px;"><i class="card-text "><%= music.music_genre %></i></div>
-        <%# カードテキスト部分 %>
-        <div class="card-text" >
-          <%# 名前と画像 %>
-          <%= link_to user_path(music.user),class: "text-dark" do %>
-          <div>
-            <%= attachment_image_tag music.user,:profile_image ,size:"50x50", fallback: "no_image.jpg",class: "mt-3 rounded-circle" %>
-          </div>
-          <div class=" mt-1"><%= music.user.name%></div>
-          <% end %>
+        <div class="text-info text-center" style="margin-top:20px;"><i class="card-text "><%= music.music_genre %></i></div>
 
-          <%# ランク 部分　%>
-          <div id="music_rate_<%= music.id  %>" data-score="<%= music.rate %>"></div>
+         <%# ランク 部分　%>
+          <div id="music_rate_<%= music.id  %>" data-score="<%= music.rate %>" class="text-center mt-3"></div>
           <script>
             $(document).on('turbolinks:load', function(){
+              $('#music_rate_<%= music.id %>').empty();
               $('#music_rate_<%= music.id  %>').raty({
               　readOnly: true,
               　score: function() {
@@ -45,18 +37,31 @@
              });
             });
           </script>
-        </div>
-        <%# 音楽詳細画面へ %>
-        <div class="my-3">
-          <button type="button" class="btn btn-outline-info"><%= link_to music_path(music), class: "text-info" do %><i class="fas fa-eye ">&nbsp;Detail</i><% end %></button>
-        </div>
+
         <%# ファボ %>
-        <div class="d-inline" id="music_favorite_<%= music.id %>">
-          <%= render 'favorites/favorite', music: music %>
-        </div>
+        <div class="mt-4">
+          <div class="d-inline mt-4" id="music_favorite_<%= music.id %>">
+            <%= render 'favorites/favorite', music: music %>
+          </div>
         <%# コメント数 %>
-        <div class="d-inline ml-2">
-          <i class="fas fa-comments text-info fa-lg"><%= music.music_comments.count %></i>
+          <div class="d-inline ml-2 mt-4">
+            <i class="fas fa-comments text-info fa-lg"><%= music.music_comments.count %></i>
+          </div>
+        </div>
+
+         <%# 音楽詳細画面へ %>
+        <div class="mt-4">
+          <button type="button" class="btn "><%= link_to music_path(music), class: "text-info" do %><i class="fa-lg">&nbsp;Detail</i><% end %></button>
+        </div>
+
+        <%# 名前と画像 %>
+        <div class="card-text text-right " >
+          <%= link_to user_path(music.user),class: "text-dark" do %>
+          <div>
+            <%= attachment_image_tag music.user,:profile_image ,size:"50x50", fallback: "no_image.jpg",class: "mt-3 rounded-circle" %>
+          </div>
+          <div class=""><%= music.user.name%></div>
+          <% end %>
         </div>
         <%# 投稿日 %>
         <div class="text-right mt-3"><%= time_ago_in_words(music.created_at) %></div>
