@@ -5,13 +5,13 @@
       <div class="card mt-4 shadow-lg h-70">
         <%= attachment_image_tag @music, :musicimage ,size: "100x300", fallback: "no_image.jpg",class: "card-img-top" %>
         <div class="card-body p-5">
-          <h4 class="card-title">「<strong><%= @music.music_name  %></strong>」</h4>
-          <h4 class="mt-2"><%= @music.artist_name  %></h4>
-          <p class="card-text　mt-4"><%= @music.music_caption  %></p>
+          <h4 class="card-title">「<strong><%= @music.music_name  %></strong>」   <%= @music.artist_name  %></h4>
+          <p class="card-text" style="margin-top:50px;"><%= @music.music_caption  %></p>
           <div class="youtube">
             <iframe class="my-3" width="500" height="300" src="https://www.youtube.com/embed/<%= @music.music_url.last(11)  %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
           <p class="card-text mt-4"><%= @music.music_genre %></p>
+          <div id="music_rate" data-score="<%= @music.rate %>"></div>
           <div class="card-text mb-3" >
             <%= link_to user_path(@music.user),class: "text-dark" do %>
             <div>
