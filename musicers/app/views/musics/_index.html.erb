@@ -21,7 +21,7 @@
           <iframe width="300" height="200" src="https://www.youtube.com/embed/<%= music.music_url.last(11) %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <%# ジャンル %>
-        <div class="text-info text-center" style="margin-top:20px;"><i class="card-text "><%= music.music_genre %></i></div>
+        <div class="text-info text-center" style="margin-top:20px;"><i class="card-text fa-lg"><%= music.music_genre %></i></div>
 
          <%# ランク 部分　%>
           <div id="music_rate_<%= music.id  %>" data-score="<%= music.rate %>" class="text-center mt-3"></div>
@@ -39,7 +39,7 @@
           </script>
 
         <%# ファボ %>
-        <div class="mt-4">
+        <div class="mt-4 text-center">
           <div class="d-inline mt-4" id="music_favorite_<%= music.id %>">
             <%= render 'favorites/favorite', music: music %>
           </div>
@@ -50,8 +50,8 @@
         </div>
 
          <%# 音楽詳細画面へ %>
-        <div class="mt-4">
-          <button type="button" class="btn "><%= link_to music_path(music), class: "text-info" do %><i class="fa-lg">&nbsp;Detail</i><% end %></button>
+        <div class="mt-4 text-center">
+          <button type="button" class="btn "><%= link_to music_path(music), class: "text-info" do %><i class="far fa-eye fa-lg">&nbsp;Detail</i><% end %></button>
         </div>
 
         <%# 名前と画像 %>

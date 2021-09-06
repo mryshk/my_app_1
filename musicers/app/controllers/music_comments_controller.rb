@@ -34,7 +34,7 @@ class MusicCommentsController < ApplicationController
 
 private
   def music_comment_params
-    params.require(:music_comment).permit(:comment)
+    params.require(:music_comment).permit(:comment,:post_rate)
   end
 
 end
