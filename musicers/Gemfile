@@ -62,3 +62,4 @@ gem "kaminari", '~> 1.2.1'
 
 gem 'hirb'
 gem 'hirb-unicode'
+gem 'ransack'

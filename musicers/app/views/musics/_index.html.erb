@@ -21,7 +21,11 @@
           <iframe width="300" height="200" src="https://www.youtube.com/embed/<%= music.music_url.last(11) %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <%# ジャンル %>
-        <div class="text-info text-center" style="margin-top:20px;"><i class="card-text fa-lg"><%= music.music_genre %></i></div>
+        <div class="text-info text-center" style="margin-top:20px;">
+          
+          <i class="card-text fa-lg"><%= music.music_genre %></i>
+          
+        </div>
 
          <%# ランク 部分　%>
           <div id="music_rate_<%= music.id  %>" data-score="<%= music.rate %>" class="text-center mt-3"></div>

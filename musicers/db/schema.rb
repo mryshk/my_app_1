@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_06_061355) do
+ActiveRecord::Schema.define(version: 2021_09_06_140814) do
 
   create_table "chats", force: :cascade do |t|
     t.integer "user_id"
@@ -62,9 +62,9 @@ ActiveRecord::Schema.define(version: 2021_09_06_061355) do
     t.text "music_caption"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "music_genre"
     t.float "rate"
     t.string "artist_name"
+    t.string "music_genre"
   end
 
   create_table "relationships", force: :cascade do |t|

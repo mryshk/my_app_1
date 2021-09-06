@@ -42,6 +42,12 @@ class MusicsController < ApplicationController
         render "search"
     end
 
+    def search_genre
+        @musics = Music.search_genre(params[:music_genre])
+        @keyword = params[:music_genre]
+        render "index"
+    end
+
     def home
         @musics = Music.where(user_id:[current_user,*current_user.following_ids]).page(params[:page]).reverse_order
     end

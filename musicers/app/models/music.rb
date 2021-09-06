@@ -12,5 +12,11 @@ class Music < ApplicationRecord
     def self.search(keyword)
       where(["music_name like? OR music_genre like?","%#{keyword}%","%#{keyword}%" ])
     end
+    
+    def self.search_genre(keyword)
+      where(["music_genre like?","%#{keyword}%" ])
+    end
+    
+    
 
 end

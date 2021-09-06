@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   end
   get 'index_date' => 'musics#index_new_date', as: 'index_new_date'
   get 'index_desc' => 'musics#index_rate_desc', as: 'index_rate_desc'
+  get 'search_genre/:music_genre'=> 'musics#search_genre', as: 'search_genre'
 
   resources :groups ,only:[:new,:create,:edit,:update,:show,:index,:destroy] do
     resources :group_users,only:[:create,:destroy,:index]
