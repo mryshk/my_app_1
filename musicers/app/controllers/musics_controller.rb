@@ -13,6 +13,7 @@ class MusicsController < ApplicationController
     def show
         @music = Music.find(params[:id])
         @comments = @music.music_comments
+        @average_rate = @comments.average(:post_rate)
     end
 
     def index
@@ -43,8 +44,8 @@ class MusicsController < ApplicationController
     end
 
     def search_genre
-        @musics = Music.search_genre(params[:music_genre])
-        @keyword = params[:music_genre]
+        @search = Music.ransack(params[:q])
+        @musics = @search.result
         render "index"
     end
 

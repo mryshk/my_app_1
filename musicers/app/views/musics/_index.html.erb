@@ -22,9 +22,9 @@
         </div>
         <%# ジャンル %>
         <div class="text-info text-center" style="margin-top:20px;">
-          
+          <%= link_to search_genre_path, q: music.music_genre do %>
           <i class="card-text fa-lg"><%= music.music_genre %></i>
-          
+          <% end %>
         </div>
 
          <%# ランク 部分　%>

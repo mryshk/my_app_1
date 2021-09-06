@@ -17,7 +17,7 @@
           <p class="card-text mt-4 text-info text-center"><%= @music.music_genre %></p>
 
           <%# ランク %>
-          <div id="average-review-rating" data-score="<%= product.average_rate %>"></div>
+          <div id="average-review-rating" data-score="<%= @average_rate %>" class="text-center"><i>Avg.</i></div>
           <script>
             $('#average-review-rating').raty({
               readOnly: true,
