@@ -46,6 +46,16 @@ class MusicsController < ApplicationController
         @musics = Music.where(user_id:[current_user,*current_user.following_ids]).page(params[:page]).reverse_order
     end
 
+    def index_new_date
+        @musics = Music.order("created_at DESC").page(params[:page])
+        render "index"
+    end
+
+    def index_rate_desc
+        @musics = Music.order(rate: :desc).page(params[:page])
+        render "index"
+    end
+
    private
    def music_params
        params.require(:music).permit(:musicimage,:music_name,:artist_name,:music_caption,:music_url,:music_genre,:rate)

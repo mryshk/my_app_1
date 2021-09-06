@@ -11,8 +11,8 @@ Rails.application.routes.draw do
     resource :favorites ,only:[:create,:destroy]
     resources :music_comments, only:[:new,:create,:edit,:destroy,:update]
   end
-  get 'index_new_date' => 'musics#index_new_date', as: 'index_new_date'
-  get 'index_rate_desc' => 'musics#index_rate_desc', as: 'index_rate_desc'
+  get 'index_date' => 'musics#index_new_date', as: 'index_new_date'
+  get 'index_desc' => 'musics#index_rate_desc', as: 'index_rate_desc'
 
   resources :groups ,only:[:new,:create,:edit,:update,:show,:index,:destroy] do
     resources :group_users,only:[:create,:destroy,:index]
