@@ -120,3 +120,13 @@ $(document).on('turbolinks:load',function(){
   });
 });
 
+$(document).on('turbolinks:load', function(){
+  $('#music_rate').raty({
+  　readOnly: true,
+  　score: function() {
+    return $(this).attr('data-score');
+    },
+    path: '/assets/'
+ });
+});
+
