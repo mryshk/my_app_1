@@ -17,21 +17,18 @@
           <p class="card-text mt-4 text-info text-center"><%= @music.music_genre %></p>
 
           <%# ランク %>
-          <div id="music_rate_<%= @music.id %>" data-score="<%= @music.rate %>" class="text-center"></div>
+          <div id="average-review-rating" data-score="<%= product.average_rate %>"></div>
           <script>
-            $('#music_rate_<%= @music.id %>').empty();
-            $(document).on('turbolinks:load', function(){
-              $('#music_rate_<%= @music.id %>').empty();
-              $('#music_rate_<%= @music.id  %>').raty({
-              　readOnly: true,
-              　score: function() {
-                return $(this).attr('data-score');
-                },
-                path: '/assets/'
-             });
-            });
+            $('#average-review-rating').raty({
+              readOnly: true,
+              starOn: "<%= asset_path('star-on.png') %>",
+              starOff: "<%= asset_path('star-off.png') %>",
+              starHalf: "<%= asset_path('star-half.png') %>",
+              score: function() {
+                return $(this).attr('data-score')
+              }
+              });
           </script>
-
           <%# ファボ・コメント　 %>
           <div class="mt-3 text-center">
             <div class="d-inline " id="music_favorite_<%= @music.id  %>">
