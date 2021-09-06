@@ -48,6 +48,6 @@ class MusicsController < ApplicationController
 
    private
    def music_params
-       params.require(:music).permit(:musicimage,:music_name,:music_caption,:music_url,:music_genre)
+       params.require(:music).permit(:musicimage,:music_name,:music_caption,:music_url,:music_genre,:rate)
    end
 end

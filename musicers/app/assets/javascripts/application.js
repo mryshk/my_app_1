@@ -15,6 +15,7 @@
 //= require bootstrap-sprockets
 
 //= require jquery
+//= require jquery.raty.js
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
@@ -118,5 +119,4 @@ $(document).on('turbolinks:load',function(){
     event.preventDefault();
   });
 });
-
 
