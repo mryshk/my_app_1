@@ -28,7 +28,7 @@
         </div>
 
          <%# 平均ランク 部分　%>
-          <h6 class="text-info text-center ">Avg.</h6>
+          <h6 class="text-center mt-3"><i><%= music.music_comments.average(:post_rate).round(2) %></i></h6>
           <div id="music_rate_<%= music.id  %>" data-score="<%= music.music_comments.average(:post_rate) %>" class="text-center "></div>
           <script>
             $(document).on('turbolinks:load', function(){

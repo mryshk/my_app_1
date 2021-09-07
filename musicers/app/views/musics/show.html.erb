@@ -18,7 +18,7 @@
 
           <%# ランク %>
           <% unless @average_rate.nil? %>
-            <h6 class="text-center mt-3"><i><%= @average_rate.floor(2) %></i></h6>
+            <h6 class="text-center mt-3"><i><%= @average_rate.round(2) %></i></h6>
           <% else %>
             <h6 class="text-center mt-3"><i>0</i></h6>
           <% end %>
