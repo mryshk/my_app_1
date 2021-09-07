@@ -20,7 +20,6 @@ class MusicsController < ApplicationController
     def index
         @musics = Music.page(params[:page]).reverse_order
         @comments = @musics.music_comments
-
     end
 
     def edit

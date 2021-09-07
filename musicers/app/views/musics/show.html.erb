@@ -17,6 +17,11 @@
           <p class="card-text mt-4 text-info text-center"><%= @music.music_genre %></p>
 
           <%# ランク %>
+          <% unless @average_rate.nil? %>
+            <h6 class="text-center mt-3"><i><%= @average_rate.floor(2) %></i></h6>
+          <% else %>
+            <h6 class="text-center mt-3"><i>0</i></h6>
+          <% end %>
           <div id="average-review-rating" data-score="<%= @average_rate %>" class="text-center"><i>Avg.</i></div>
           <script>
             $('#average-review-rating').raty({
