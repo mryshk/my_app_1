@@ -56,23 +56,12 @@
           </div>
           <%# 投稿日時 %>
           <div class="text-right mt-3"><%= time_ago_in_words(@music.created_at) %></div>
-
         </div>
       </div>
     </div>
   </div>
-  <div class="row mt-4">
-    <div class="col-8 mt-5 offset-2">
-      <h3><i class="fas fa-comments ">Comments</i></h3>
-      <div class="table-responsive">
-      <table class="table table-hover mt-3" >
-        <tbody id="comment">
-          <%= render "music_comments/comment",comments: @comments %>
-        </tbody>
-      </table>
-      </div>
-      <button type="button" class="btn btn-outline-primary btn-block mt-3"><%= link_to new_music_music_comment_path(@music),method: :get do %><i class="fas fa-comments">New post</i><% end %></button>
-    </div>
+  <div class="row mt-4" id="comment">
+    <%= render "music_comments/comment",comments: @comments, music: @music, music_comment_n: @music_comment_n %>
   </div>
   <div class="row" style="margin-top:200px;">
     <div class="col-2">

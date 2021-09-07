@@ -12,6 +12,7 @@ class MusicsController < ApplicationController
 
     def show
         @music = Music.find(params[:id])
+        @music_comment_n = MusicComment.new
         @comments = @music.music_comments
         @average_rate = @comments.average(:post_rate)
     end
