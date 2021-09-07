@@ -18,6 +18,8 @@ class MusicsController < ApplicationController
 
     def index
         @musics = Music.page(params[:page]).reverse_order
+        @comments = @musics.music_comments
+
     end
 
     def edit
@@ -65,6 +67,6 @@ class MusicsController < ApplicationController
 
    private
    def music_params
-       params.require(:music).permit(:musicimage,:music_name,:artist_name,:music_caption,:music_url,:music_genre,:rate)
+       params.require(:music).permit(:musicimage,:music_name,:artist_name,:music_caption,:music_url,:music_genre)
    end
 end

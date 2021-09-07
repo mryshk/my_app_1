@@ -32,21 +32,6 @@
         <%= f.radio_button :music_genre, :EDM %>EDM
         <small class="form-text text-muted mt-2">Please check your music genre</small>
       </div>
-      <div id="star" class="mb-2 mt-3">
-        <%= f.label :rate,'Rate' %>
-        <%= f.hidden_field :rate,id: :review_star %>
-      </div>
-      <script>
-        $(document).on('turbolinks:load', function(){
-          $('#star').raty({
-         starOn: "<%= asset_path('star-on.png') %>",
-         starOff: "<%= asset_path('star-off.png') %>",
-         starHalf: "<%= asset_path('star-half.png') %>",
-         scoreName: 'music[rate]', //登録するモデル名とカラム名を記述
-         half: true,
-         });
-        });
-      </script>
       <div>
         <div class="mb-2 mt-3" ><strong>Musician’s image</strong></div>
         <%= f.attachment_field :musicimage,class: "form-control-file"  %>

@@ -28,7 +28,8 @@
         </div>
 
          <%# ランク 部分　%>
-          <div id="music_rate_<%= music.id  %>" data-score="<%= music.rate %>" class="text-center mt-3"></div>
+
+          <div id="music_rate_<%= music.id  %>" data-score="<%= music.music_comments.average(:post_rate) %>" class="text-center mt-3"></div>
           <script>
             $(document).on('turbolinks:load', function(){
               $('#music_rate_<%= music.id %>').empty();
