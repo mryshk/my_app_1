@@ -7,6 +7,20 @@
       <div>
         <%= f.text_area :comment, rows:'5',placeholder: "Comment" ,class: "form-control" %>
       </div>
+      <%# 星ランク %>
+      <div id="post_star" class="mb-2 mt-3">
+        <%= f.label :post_rate,'Rate' %>
+        <%= f.hidden_field :post_rate,id: :review_star %>
+      </div>
+      <script>
+      $('#post_star').raty({
+       starOn: "<%= asset_path('star-on.png') %>",
+       starOff: "<%= asset_path('star-off.png') %>",
+       starHalf: "<%= asset_path('star-half.png') %>",
+       scoreName: 'music_comment[post_rate]', //登録するモデル名とカラム名を記述
+       half: true,
+      });
+      </script>
       <button class="btn btn-info mt-4" style="width:100px">Update
         <% f.submit %>
       </button>

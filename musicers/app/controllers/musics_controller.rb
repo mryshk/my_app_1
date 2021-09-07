@@ -19,7 +19,6 @@ class MusicsController < ApplicationController
 
     def index
         @musics = Music.page(params[:page]).reverse_order
-        @comments = @musics.music_comments
     end
 
     def edit
@@ -46,9 +45,9 @@ class MusicsController < ApplicationController
     end
 
     def search_genre
-        @search = Music.ransack(params[:q])
-        @musics = @search.result
-        render "index"
+        @value = params[:music_genre]
+        @search = Music.where(music_genre: @value).page(params[:page]).reverse_order
+        render "search"
     end
 
     def home
