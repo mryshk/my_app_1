@@ -17,18 +17,18 @@
         <%# 説明 %>
         <p class="card-text text-center"><%= music.music_caption %></p>
         <%# YOUTUBE %>
-        <div class="youtube">
+        <div class="youtube" style="margin-bottom:20px;">
           <iframe width="300" height="200" src="https://www.youtube.com/embed/<%= music.music_url.last(11) %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <%# ジャンル %>
         <div class="text-info text-center" style="margin-top:20px;">
           <%= link_to search_genre_path(:music_genre => music.music_genre )do %>
-          <i class="card-text fa-lg"><%= music.music_genre %></i>
+          <i class="card-text text-info"><%= music.music_genre %></i>
           <% end %>
         </div>
 
          <%# 平均ランク 部分　%>
-          <div id="music_rate_<%= music.id  %>" data-score="<%= music.music_comments.average(:post_rate) %>" class="text-center "></div>
+          <div id="music_rate_<%= music.id  %>" data-score="<%= music.music_comments.average(:post_rate) %>" class="text-center " style="margin-top:20px;"></div>
           <script>
             $(document).on('turbolinks:load', function(){
               $('#music_rate_<%= music.id %>').empty();
@@ -43,8 +43,8 @@
           </script>
 
         <%# ファボ %>
-        <div class="mt-4 text-center">
-          <div class="d-inline mt-4" id="music_favorite_<%= music.id %>">
+        <div class="mt-4 text-center" >
+          <div class="d-inline mt-4" style="margin-right:20px;"  id="music_favorite_<%= music.id %>">
             <%= render 'favorites/favorite', music: music %>
           </div>
         <%# コメント数 %>
