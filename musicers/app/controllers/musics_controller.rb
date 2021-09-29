@@ -49,16 +49,16 @@ class MusicsController < ApplicationController
         @search = Music.where(music_genre: @value).page(params[:page]).reverse_order
         render "search"
     end
-
+    # フォローしている人のみを表示。タイムライン機能。
     def home
         @musics = Music.where(user_id:[current_user,*current_user.following_ids]).page(params[:page]).reverse_order
     end
-
+    # 新しい順に並び替え
     def index_new_date
         @musics = Music.order("created_at DESC").page(params[:page])
         render "index"
     end
-
+    # レビューが高い順に並び替え
     def index_rate_desc
         @musics = Music.order(rate: :desc).page(params[:page])
         render "index"

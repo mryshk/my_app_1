@@ -14,7 +14,4 @@ class Music < ApplicationRecord
     end
     
 
-    
-    
-
 end
